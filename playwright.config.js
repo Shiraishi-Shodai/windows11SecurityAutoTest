@@ -8,7 +8,6 @@ import { defineConfig, devices } from '@playwright/test';
 // import dotenv from 'dotenv';
 // import path from 'path';
 // dotenv.config({ path: path.resolve(__dirname, '.env') });
-
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
@@ -34,8 +33,8 @@ export default defineConfig({
     viewport: { width: 1280, height: 720 },
   },
 
-  // セッション情報を出力する先
-  outputDir: 'test-results/',
+  // セッション情報を出力する先(テスト実行ごとにクリーンアップされる)
+  outputDir: 'test-results/.last-run',
   // テスト対象のファイル
   // testMatch: '**/*.@(spec|test).?(c|m)[jt]s?(x)',
 
@@ -54,19 +53,18 @@ export default defineConfig({
     // },
 
     /* Test against branded browsers. */
-    {
-      name: "setup",
-      testMatch: /.*\.setup\.js/ // 認証を行うファイル
-    },
+    // {
+    //   name: "setup",
+    //   testMatch: /.*\.setup\.js/ // 認証を行うファイル
+    // },
     {
       name: 'edge',
       use: { 
         ...devices['Desktop Edge'],
          channel: 'msedge' ,
-         storageState: `test-results/.auth/user.json`
+        //  storageState: `test-results/.auth/user.json`
         },
-      dependencies: ["setup"]
-
+      // dependencies: ["setup"]
     },
     // {
     //   name: 'Chrome',

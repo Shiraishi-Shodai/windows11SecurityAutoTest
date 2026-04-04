@@ -1,0 +1,524 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "📣 Publication四半期表彰 2026/Q1 を発表！" [ref=e5] [cursor=pointer]:
+          - /url: https://info.zenn.dev/2026-04-02-publication-quarterly-award-2026q1
+          - text: 📣 Publication四半期表彰 2026/Q1 を発表！
+          - img [ref=e6]
+        - button "閉じる" [ref=e9] [cursor=pointer]:
+          - img [ref=e10]
+      - generic [ref=e14]:
+        - link "Zenn | エンジニアのための情報共有コミュニティ" [ref=e15] [cursor=pointer]:
+          - /url: /
+          - img "Zenn | エンジニアのための情報共有コミュニティ" [ref=e16]
+        - generic [ref=e21]:
+          - button "テーマを切り替える" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]
+          - link "検索" [ref=e25] [cursor=pointer]:
+            - /url: /search
+            - img [ref=e26]
+          - button "Log in" [ref=e28] [cursor=pointer]
+    - article [ref=e29]:
+      - generic [ref=e32]:
+        - heading "dotenv の利用方法" [level=1] [ref=e36]
+        - generic [ref=e39]:
+          - time [ref=e40]: 2024/05/15
+          - text: に公開
+      - generic [ref=e43]:
+        - text: X(Twitter)にポスト Facebookに投稿 はてなブックマークに登録
+        - generic [ref=e44]:
+          - generic [ref=e45]:
+            - generic [ref=e47]:
+              - generic [ref=e48]:
+                - link "Node.js" [ref=e49] [cursor=pointer]:
+                  - /url: /topics/nodejs
+                  - img [ref=e51]
+                  - generic [ref=e52]: Node.js
+                - link "TypeScript" [ref=e53] [cursor=pointer]:
+                  - /url: /topics/typescript
+                  - img [ref=e55]
+                  - generic [ref=e56]: TypeScript
+                - link "tech" [ref=e57] [cursor=pointer]:
+                  - /url: /tech-or-idea
+                  - img [ref=e59]
+                  - generic [ref=e60]: tech
+              - generic [ref=e61]:
+                - heading "はじめに" [level=1] [ref=e62]
+                - paragraph [ref=e63]:
+                  - text: この記事では
+                  - code [ref=e64]: ts-node
+                  - text: から環境変数の
+                  - code [ref=e65]: .env
+                  - text: を読み込むために
+                  - code [ref=e66]: dotenv
+                  - text: を利用する方法を記載します。
+                - heading "作業プロジェクトの準備" [level=1] [ref=e67]
+                - paragraph [ref=e68]: TypeScript の簡易プロジェクトを作成します。
+                - heading "package.json を 作成" [level=3] [ref=e69]
+                - paragraph [ref=e70]:
+                  - text: まず、
+                  - code [ref=e71]: package.json
+                  - text: を作成します。
+                - generic [ref=e73]:
+                  - code [ref=e75]:
+                    - generic [ref=e76]: $ mkdir -p next-dotenv
+                    - generic [ref=e77]: $ cd next-dotenv
+                    - generic [ref=e78]: $ pnpm init
+                  - button "クリップボードにコピー" [ref=e79] [cursor=pointer]:
+                    - img [ref=e80]
+                  - button "右端で折り返す" [ref=e81] [cursor=pointer]:
+                    - img [ref=e82]
+                - paragraph [ref=e83]:
+                  - text: 下記で
+                  - code [ref=e84]: package.json
+                  - text: を上書きします。ポイントは
+                  - code [ref=e85]: scripts
+                  - text: に 3 つのスクリプトを追加しています。
+                  - code [ref=e86]: typecheck
+                  - text: で型をチェックし、
+                  - code [ref=e87]: dev
+                  - text: でローカルで動作確認、
+                  - code [ref=e88]: build
+                  - text: でトランスパイルします。
+                - generic [ref=e89]:
+                  - generic [ref=e91]: package.json
+                  - generic [ref=e92]:
+                    - code [ref=e94]:
+                      - generic [ref=e95]: "{"
+                      - generic [ref=e96]: "\"name\": \"sample\","
+                      - generic [ref=e97]: "\"version\": \"1.0.0\","
+                      - generic [ref=e98]: "\"description\": \"\","
+                      - generic [ref=e99]: "\"main\": \"index.ts\","
+                      - generic [ref=e100]: "\"scripts\": {"
+                      - generic [ref=e101]: "\"typecheck\": \"tsc --noEmit\","
+                      - generic [ref=e102]: "\"dev\": \"ts-node index.ts\","
+                      - generic [ref=e103]: "\"build\": \"tsc\""
+                      - generic [ref=e104]: "},"
+                      - generic [ref=e105]: "\"keywords\": [],"
+                      - generic [ref=e106]: "\"author\": \"\""
+                      - generic [ref=e107]: "}"
+                    - button "クリップボードにコピー" [ref=e108] [cursor=pointer]:
+                      - img [ref=e109]
+                    - button "右端で折り返す" [ref=e110] [cursor=pointer]:
+                      - img [ref=e111]
+                - heading "TypeScript & ts-node をインストール" [level=3] [ref=e112]
+                - paragraph [ref=e113]: TypeScript と ts-node をインストールします。
+                - generic [ref=e115]:
+                  - code [ref=e117]:
+                    - generic [ref=e118]: $ pnpm install -D typescript ts-node @types/node
+                  - button "クリップボードにコピー" [ref=e119] [cursor=pointer]:
+                    - img [ref=e120]
+                  - button "右端で折り返す" [ref=e121] [cursor=pointer]:
+                    - img [ref=e122]
+                - heading "TypeScriptの設定ファイルを作成" [level=3] [ref=e123]
+                - paragraph [ref=e124]:
+                  - code [ref=e125]: tsconfig.json
+                  - text: を作成します。
+                - generic [ref=e127]:
+                  - code [ref=e129]:
+                    - generic [ref=e130]: $ npx tsc --init
+                  - button "クリップボードにコピー" [ref=e131] [cursor=pointer]:
+                    - img [ref=e132]
+                  - button "右端で折り返す" [ref=e133] [cursor=pointer]:
+                    - img [ref=e134]
+                - paragraph [ref=e135]:
+                  - code [ref=e136]: tsconfig.json
+                  - text: を上書きします。
+                - generic [ref=e137]:
+                  - generic [ref=e139]: tsconfig.json
+                  - generic [ref=e140]:
+                    - code [ref=e142]:
+                      - generic [ref=e143]: "{"
+                      - generic [ref=e144]: "\"compilerOptions\": {"
+                      - generic [ref=e145]: "\"target\": \"es2022\","
+                      - generic [ref=e146]: "\"module\": \"commonjs\","
+                      - generic [ref=e147]: "\"sourceMap\": true,"
+                      - generic [ref=e148]: "\"outDir\": \"./dist\","
+                      - generic [ref=e149]: "\"strict\": true,"
+                      - generic [ref=e150]: "\"skipLibCheck\": true,"
+                      - generic [ref=e151]: "\"forceConsistentCasingInFileNames\": true,"
+                      - generic [ref=e152]: "\"esModuleInterop\":true"
+                      - generic [ref=e153]: "},"
+                      - generic [ref=e154]: "\"include\": [\"**/*.ts\",\"**/*.js\"],"
+                      - generic [ref=e155]: "\"exclude\": [\"node_modules\", \"dist\"]"
+                      - generic [ref=e156]: "}"
+                    - button "クリップボードにコピー" [ref=e157] [cursor=pointer]:
+                      - img [ref=e158]
+                    - button "右端で折り返す" [ref=e159] [cursor=pointer]:
+                      - img [ref=e160]
+                - paragraph [ref=e161]:
+                  - code [ref=e162]: git
+                  - text: を初期化します。
+                - generic [ref=e164]:
+                  - code [ref=e166]:
+                    - generic [ref=e167]: $ git init
+                  - button "クリップボードにコピー" [ref=e168] [cursor=pointer]:
+                    - img [ref=e169]
+                  - button "右端で折り返す" [ref=e170] [cursor=pointer]:
+                    - img [ref=e171]
+                - paragraph [ref=e172]:
+                  - code [ref=e173]: .gitignore
+                  - text: を作成します。
+                - generic [ref=e175]:
+                  - code [ref=e177]:
+                    - generic [ref=e178]: $ touch .gitignore
+                  - button "クリップボードにコピー" [ref=e179] [cursor=pointer]:
+                    - img [ref=e180]
+                  - button "右端で折り返す" [ref=e181] [cursor=pointer]:
+                    - img [ref=e182]
+                - generic [ref=e183]:
+                  - generic [ref=e185]: .gitignore
+                  - generic [ref=e186]:
+                    - code [ref=e188]:
+                      - generic [ref=e189]: "# dependencies"
+                      - generic [ref=e190]: node_modules
+                    - button "クリップボードにコピー" [ref=e191] [cursor=pointer]:
+                      - img [ref=e192]
+                    - button "右端で折り返す" [ref=e193] [cursor=pointer]:
+                      - img [ref=e194]
+                - heading "動作確認コードを作成" [level=3] [ref=e195]
+                - paragraph [ref=e196]: 動作を確認するためのコードを作成します。
+                - generic [ref=e198]:
+                  - code [ref=e200]:
+                    - generic [ref=e201]: $ touch index.ts
+                  - button "クリップボードにコピー" [ref=e202] [cursor=pointer]:
+                    - img [ref=e203]
+                  - button "右端で折り返す" [ref=e204] [cursor=pointer]:
+                    - img [ref=e205]
+                - generic [ref=e206]:
+                  - generic [ref=e208]: index.ts
+                  - generic [ref=e209]:
+                    - code [ref=e211]:
+                      - generic [ref=e212]: console.log('Hello, World');
+                    - button "クリップボードにコピー" [ref=e213] [cursor=pointer]:
+                      - img [ref=e214]
+                    - button "右端で折り返す" [ref=e215] [cursor=pointer]:
+                      - img [ref=e216]
+                - heading "型チェック" [level=3] [ref=e217]
+                - paragraph [ref=e218]: 型チェックします。
+                - generic [ref=e220]:
+                  - code [ref=e222]:
+                    - generic [ref=e223]: $ pnpm run typecheck
+                  - button "クリップボードにコピー" [ref=e224] [cursor=pointer]:
+                    - img [ref=e225]
+                  - button "右端で折り返す" [ref=e226] [cursor=pointer]:
+                    - img [ref=e227]
+                - heading "動作確認" [level=3] [ref=e228]
+                - paragraph [ref=e229]: 動作確認を実施します。
+                - generic [ref=e231]:
+                  - code [ref=e233]:
+                    - generic [ref=e234]: $ pnpm run dev
+                    - generic [ref=e235]: Hello, World
+                  - button "クリップボードにコピー" [ref=e236] [cursor=pointer]:
+                    - img [ref=e237]
+                  - button "右端で折り返す" [ref=e238] [cursor=pointer]:
+                    - img [ref=e239]
+                - paragraph [ref=e240]: コミットします。
+                - generic [ref=e242]:
+                  - code [ref=e244]:
+                    - generic [ref=e245]: $ git add .
+                    - generic [ref=e246]: $ git commit -m "feat:初回コミット"
+                  - button "クリップボードにコピー" [ref=e247] [cursor=pointer]:
+                    - img [ref=e248]
+                  - button "右端で折り返す" [ref=e249] [cursor=pointer]:
+                    - img [ref=e250]
+                - heading "環境変数ファイルを作成" [level=1] [ref=e251]
+                - paragraph [ref=e252]:
+                  - code [ref=e253]: .env
+                  - text: ファイルを作成します。
+                - generic [ref=e255]:
+                  - code [ref=e257]:
+                    - generic [ref=e258]: $ touch .env
+                  - button "クリップボードにコピー" [ref=e259] [cursor=pointer]:
+                    - img [ref=e260]
+                  - button "右端で折り返す" [ref=e261] [cursor=pointer]:
+                    - img [ref=e262]
+                - generic [ref=e263]:
+                  - generic [ref=e265]: .env
+                  - generic [ref=e266]:
+                    - code [ref=e268]:
+                      - generic [ref=e269]: MESSAGE='Universe'
+                    - button "クリップボードにコピー" [ref=e270] [cursor=pointer]:
+                      - img [ref=e271]
+                    - button "右端で折り返す" [ref=e272] [cursor=pointer]:
+                      - img [ref=e273]
+                - paragraph [ref=e274]:
+                  - code [ref=e275]: .gitignore
+                  - text: に環境変数ファイルを追加します。
+                - generic [ref=e277]:
+                  - code [ref=e279]:
+                    - generic [ref=e280]: $ vi .gitignore
+                  - button "クリップボードにコピー" [ref=e281] [cursor=pointer]:
+                    - img [ref=e282]
+                  - button "右端で折り返す" [ref=e283] [cursor=pointer]:
+                    - img [ref=e284]
+                - generic [ref=e285]:
+                  - generic [ref=e287]: .gitignore
+                  - generic [ref=e288]:
+                    - code [ref=e290]:
+                      - generic [ref=e291]: "+# # env files"
+                      - generic [ref=e292]: +.env*.local
+                      - generic [ref=e293]: +.env
+                    - button "クリップボードにコピー" [ref=e294] [cursor=pointer]:
+                      - img [ref=e295]
+                    - button "右端で折り返す" [ref=e296] [cursor=pointer]:
+                      - img [ref=e297]
+                - heading "dotenv をインストール" [level=1] [ref=e298]
+                - paragraph [ref=e299]: dotenv をインストールします。
+                - generic [ref=e301]:
+                  - code [ref=e303]:
+                    - generic [ref=e304]: $ pnpm install dotenv -D
+                  - button "クリップボードにコピー" [ref=e305] [cursor=pointer]:
+                    - img [ref=e306]
+                  - button "右端で折り返す" [ref=e307] [cursor=pointer]:
+                    - img [ref=e308]
+                - heading "dotenv を利用" [level=1] [ref=e309]
+                - paragraph [ref=e310]:
+                  - code [ref=e311]: index.ts
+                  - text: に dotenv をインポートし環境変数の
+                  - code [ref=e312]: MESSAGE
+                  - text: を読み込みます。
+                - generic [ref=e313]:
+                  - generic [ref=e315]: index.ts
+                  - generic [ref=e316]:
+                    - code [ref=e318]:
+                      - generic [ref=e319]: import 'dotenv/config'
+                      - generic [ref=e320]: "console.log(`Hello, ${process.env.MESSAGE}`);"
+                    - button "クリップボードにコピー" [ref=e321] [cursor=pointer]:
+                      - img [ref=e322]
+                    - button "右端で折り返す" [ref=e323] [cursor=pointer]:
+                      - img [ref=e324]
+                - paragraph [ref=e325]: 動作確認を実施します。
+                - generic [ref=e327]:
+                  - code [ref=e329]:
+                    - generic [ref=e330]: $ pnpm run dev
+                    - generic [ref=e331]: Hello, Universe
+                  - button "クリップボードにコピー" [ref=e332] [cursor=pointer]:
+                    - img [ref=e333]
+                  - button "右端で折り返す" [ref=e334] [cursor=pointer]:
+                    - img [ref=e335]
+                - paragraph [ref=e336]: コミットします。
+                - generic [ref=e338]:
+                  - code [ref=e340]:
+                    - generic [ref=e341]: $ git add .
+                    - generic [ref=e342]: $ git commit -m "feat:dotenvを利用"
+                  - button "クリップボードにコピー" [ref=e343] [cursor=pointer]:
+                    - img [ref=e344]
+                  - button "右端で折り返す" [ref=e345] [cursor=pointer]:
+                    - img [ref=e346]
+                - heading "まとめ" [level=1] [ref=e347]
+                - paragraph [ref=e348]:
+                  - text: この記事では
+                  - code [ref=e349]: ts-node
+                  - text: から環境変数の
+                  - code [ref=e350]: .env
+                  - text: を読み込むために
+                  - code [ref=e351]: dotenv
+                  - text: を利用する方法を記載しました。
+                - paragraph [ref=e352]:
+                  - iframe [ref=e354]:
+                    
+              - generic [ref=e355]:
+                - generic [ref=e356]:
+                  - button "いいね" [ref=e357] [cursor=pointer]:
+                    - img [ref=e358]
+                  - generic [ref=e372]: "7"
+                - generic [ref=e373]:
+                  - button "ブックマーク" [ref=e374] [cursor=pointer]:
+                    - img [ref=e375]
+                  - generic [ref=e377]: "2"
+                - generic [ref=e378]:
+                  - button "その他の操作" [ref=e380] [cursor=pointer]:
+                    - img [ref=e381]
+                  - generic [ref=e383]:
+                    - tooltip "X(Twitter)にポスト" [ref=e384] [cursor=pointer]:
+                      - img [ref=e385]
+                      - text: X(Twitter)にポスト
+                    - tooltip "Facebookに投稿" [ref=e388] [cursor=pointer]:
+                      - img [ref=e389]
+                      - text: Facebookに投稿
+                    - tooltip "はてなブックマークに登録" [ref=e392] [cursor=pointer]:
+                      - img [ref=e393]
+                      - text: はてなブックマークに登録
+              - complementary [ref=e396]:
+                - generic [ref=e397]:
+                  - link "hayato94087" [ref=e398] [cursor=pointer]:
+                    - /url: /hayato94087
+                    - img "hayato94087" [ref=e399]
+                  - link "hayato94087" [ref=e401] [cursor=pointer]:
+                    - /url: /hayato94087
+                  - generic [ref=e402]:
+                    - paragraph [ref=e403]: AI, Webアプリ開発が好きなエンジニアです
+                    - generic [ref=e404]:
+                      - button "フォロー" [ref=e406] [cursor=pointer]
+                      - tooltip "@hayato94087" [ref=e407] [cursor=pointer]:
+                        - img "GitHub" [ref=e408]
+                        - text: "@hayato94087"
+                      - tooltip "@hayato94087" [ref=e410] [cursor=pointer]:
+                        - img "X(Twitter)" [ref=e411]
+                        - text: "@hayato94087"
+              - complementary [ref=e415]:
+                - generic [ref=e416]:
+                  - generic [ref=e417]: バッジを贈って著者を応援しよう
+                  - paragraph [ref=e419]: バッジを受け取った著者にはZennから現金やAmazonギフトカードが還元されます。
+                  - button "バッジを贈る" [ref=e421] [cursor=pointer]
+                - img [ref=e422]
+            - generic [ref=e425]:
+              - generic [ref=e427]:
+                - heading "Discussion" [level=3] [ref=e428]
+                - img [ref=e429]
+              - generic [ref=e431]:
+                - text: ログインするとコメントできます
+                - button "Login" [ref=e433] [cursor=pointer]
+          - complementary [ref=e434]:
+            - generic [ref=e435]:
+              - generic [ref=e437]:
+                - generic [ref=e438]:
+                  - link "hayato94087" [ref=e439] [cursor=pointer]:
+                    - /url: /hayato94087
+                    - img "hayato94087" [ref=e440]
+                  - generic [ref=e441]:
+                    - link "hayato94087" [ref=e442] [cursor=pointer]:
+                      - /url: /hayato94087
+                    - generic [ref=e443]:
+                      - button "フォロー" [ref=e444] [cursor=pointer]
+                      - tooltip "@hayato94087" [ref=e445] [cursor=pointer]:
+                        - img "GitHub" [ref=e446]
+                        - text: "@hayato94087"
+                      - tooltip "@hayato94087" [ref=e448] [cursor=pointer]:
+                        - img "X(Twitter)" [ref=e449]
+                        - text: "@hayato94087"
+                - paragraph [ref=e453]: AI, Webアプリ開発が好きなエンジニアです
+                - button "バッジを贈る" [ref=e455] [cursor=pointer]
+                - link "バッジを贈るとは" [ref=e457] [cursor=pointer]:
+                  - /url: /faq/badges
+                  - text: バッジを贈るとは
+                  - img [ref=e458]
+              - generic [ref=e463]:
+                - generic [ref=e464]:
+                  - generic [ref=e465]: 目次
+                  - list [ref=e467]:
+                    - listitem [ref=e468]:
+                      - link "はじめに" [ref=e469] [cursor=pointer]:
+                        - /url: "#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB"
+                    - listitem [ref=e470]:
+                      - link "作業プロジェクトの準備" [ref=e471] [cursor=pointer]:
+                        - /url: "#%E4%BD%9C%E6%A5%AD%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%81%AE%E6%BA%96%E5%82%99"
+                      - list [ref=e472]:
+                        - listitem [ref=e473]:
+                          - link "package.json を 作成" [ref=e474] [cursor=pointer]:
+                            - /url: "#package.json-%E3%82%92-%E4%BD%9C%E6%88%90"
+                        - listitem [ref=e475]:
+                          - link "TypeScript & ts-node をインストール" [ref=e476] [cursor=pointer]:
+                            - /url: "#typescript-%26-ts-node-%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"
+                        - listitem [ref=e477]:
+                          - link "TypeScriptの設定ファイルを作成" [ref=e478] [cursor=pointer]:
+                            - /url: "#typescript%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E4%BD%9C%E6%88%90"
+                        - listitem [ref=e479]:
+                          - link "動作確認コードを作成" [ref=e480] [cursor=pointer]:
+                            - /url: "#%E5%8B%95%E4%BD%9C%E7%A2%BA%E8%AA%8D%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E4%BD%9C%E6%88%90"
+                        - listitem [ref=e481]:
+                          - link "型チェック" [ref=e482] [cursor=pointer]:
+                            - /url: "#%E5%9E%8B%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF"
+                        - listitem [ref=e483]:
+                          - link "動作確認" [ref=e484] [cursor=pointer]:
+                            - /url: "#%E5%8B%95%E4%BD%9C%E7%A2%BA%E8%AA%8D"
+                    - listitem [ref=e485]:
+                      - link "環境変数ファイルを作成" [ref=e486] [cursor=pointer]:
+                        - /url: "#%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E4%BD%9C%E6%88%90"
+                    - listitem [ref=e487]:
+                      - link "dotenv をインストール" [ref=e488] [cursor=pointer]:
+                        - /url: "#dotenv-%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"
+                    - listitem [ref=e489]:
+                      - link "dotenv を利用" [ref=e490] [cursor=pointer]:
+                        - /url: "#dotenv-%E3%82%92%E5%88%A9%E7%94%A8"
+                    - listitem [ref=e491]:
+                      - link "まとめ" [ref=e492] [cursor=pointer]:
+                        - /url: "#%E3%81%BE%E3%81%A8%E3%82%81"
+                - generic [ref=e493]:
+                  - paragraph [ref=e494]: Zennからのお知らせ
+                  - article [ref=e497]:
+                    - link "記事投稿コンテスト「GitHub Copilot 活用選手権」" [ref=e498] [cursor=pointer]:
+                      - /url: https://zenn.dev/contests/github-2026-spring
+                      - paragraph [ref=e503]: 記事投稿コンテスト「GitHub Copilot 活用選手権」
+      - generic [ref=e504]:
+        - generic [ref=e506]:
+          - button "いいね" [ref=e507] [cursor=pointer]:
+            - img [ref=e508]
+          - generic [ref=e522]: "7"
+        - generic [ref=e524]:
+          - button "ブックマーク" [ref=e525] [cursor=pointer]:
+            - img [ref=e526]
+          - generic [ref=e528]: "2"
+        - button [ref=e530] [cursor=pointer]:
+          - img [ref=e531]
+    - contentinfo [ref=e533]:
+      - generic [ref=e534]:
+        - generic [ref=e535]:
+          - generic [ref=e536]:
+            - link "Zenn | エンジニアのための情報共有コミュニティ" [ref=e537] [cursor=pointer]:
+              - /url: /
+              - img "Zenn | エンジニアのための情報共有コミュニティ" [ref=e538]
+            - paragraph [ref=e542]: エンジニアのための 情報共有コミュニティ
+          - generic [ref=e543]:
+            - navigation [ref=e544]:
+              - heading "About" [level=4] [ref=e545]
+              - list [ref=e546]:
+                - listitem [ref=e547]:
+                  - link "Zennについて" [ref=e549] [cursor=pointer]:
+                    - /url: /about
+                - listitem [ref=e550]:
+                  - link "運営会社" [ref=e551] [cursor=pointer]:
+                    - /url: https://classmethod.jp
+                - listitem [ref=e552]:
+                  - link "お知らせ・リリース" [ref=e553] [cursor=pointer]:
+                    - /url: https://info.zenn.dev
+                - listitem [ref=e554]:
+                  - link "イベント" [ref=e556] [cursor=pointer]:
+                    - /url: /events
+            - navigation [ref=e557]:
+              - heading "Guides" [level=4] [ref=e558]
+              - list [ref=e559]:
+                - listitem [ref=e560]:
+                  - link "使い方" [ref=e562] [cursor=pointer]:
+                    - /url: /manual
+                - listitem [ref=e563]:
+                  - generic [ref=e564]:
+                    - link "法人向けメニュー" [ref=e565] [cursor=pointer]:
+                      - /url: /biz-lp
+                    - generic [ref=e566]: New
+                - listitem [ref=e567]:
+                  - link "Publication / Pro" [ref=e569] [cursor=pointer]:
+                    - /url: /publications
+                - listitem [ref=e570]:
+                  - link "よくある質問" [ref=e572] [cursor=pointer]:
+                    - /url: /faq
+            - navigation [ref=e573]:
+              - heading "Links" [level=4] [ref=e574]
+              - list [ref=e575]:
+                - listitem [ref=e576]:
+                  - link "X(Twitter)" [ref=e577] [cursor=pointer]:
+                    - /url: https://twitter.com/zenn_dev
+                - listitem [ref=e578]:
+                  - link "GitHub" [ref=e579] [cursor=pointer]:
+                    - /url: https://github.com/zenn-dev
+                - listitem [ref=e580]:
+                  - link "メディアキット" [ref=e582] [cursor=pointer]:
+                    - /url: /mediakit
+            - navigation [ref=e583]:
+              - heading "Legal" [level=4] [ref=e584]
+              - list [ref=e585]:
+                - listitem [ref=e586]:
+                  - link "利用規約" [ref=e588] [cursor=pointer]:
+                    - /url: /terms
+                - listitem [ref=e589]:
+                  - link "プライバシーポリシー" [ref=e591] [cursor=pointer]:
+                    - /url: /privacy
+                - listitem [ref=e592]:
+                  - link "特商法表記" [ref=e594] [cursor=pointer]:
+                    - /url: /terms/transaction-law
+        - link [ref=e597] [cursor=pointer]:
+          - /url: https://classmethod.jp/
+          - img [ref=e598]
+  - alert [ref=e601]
